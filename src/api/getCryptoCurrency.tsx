@@ -1,11 +1,13 @@
 import axios from "axios";
+
+import { API_URL_BASE } from '@env';
 import { CryptoCurrency, Datum } from '../interfaces/types';
 
-const baseUrl = 'https://min-api.cryptocompare.com/data/top/mktcapfull?limit=10&tsym=USD';
+const endpoint = `${API_URL_BASE}/top/mktcapfull?limit=10&tsym=USD`;
 
 export const getCryptoCurrency = async (): Promise<Datum[]> => {
     try {
-        const resp = await axios.get<CryptoCurrency>(baseUrl);
+        const resp = await axios.get<CryptoCurrency>(endpoint);
 
         const { Data } = await resp.data;
         return Data;
@@ -15,5 +17,4 @@ export const getCryptoCurrency = async (): Promise<Datum[]> => {
         const Data: Datum[] = [];
         return Data;
     }
-
 }
