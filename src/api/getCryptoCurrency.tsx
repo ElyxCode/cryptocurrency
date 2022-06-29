@@ -12,8 +12,9 @@ export const getCryptoCurrency = async (): Promise<Datum[]> => {
         const { Data } = await resp.data;
         return Data;
 
-    } catch (err) {
-        console.log(err)
+    } catch (error) {
+        console.log(error);
+        console.log('Erro: cannot recovery crypto list')
         const Data: Datum[] = [];
         return Data;
     }
